@@ -59,6 +59,18 @@ a:hover {
 }
 
 
+.bookies {
+    color: #9eab1e !important;
+}
+
+.tweets {
+    top: -20px;
+    position: relative;
+    font-size: 1rem !important;
+    color: #4ab3f4 !important;
+
+}
+
 .img-candidate {
     width: 50%;
     margin: auto;
@@ -95,7 +107,10 @@ a:hover {
     font-weight: 500;
     text-shadow: 1px 1px #ECECEC;
     margin-bottom: 0px;
+    margin-top: 5px;
 }
+
+
 
 
 .row-cards {
@@ -105,10 +120,6 @@ a:hover {
     margin-bottom: 3%;
 }
 
-.row-form {
-    width: 20%;
-    text-align: center;
-}
 
 .row-blue {
     padding: 2%;
@@ -121,16 +132,11 @@ a:hover {
 
 .row-side-blue {
     min-height: 72px;
-
     margin: 0;
     background: #1da1f2;
     border: none;
 
 
-}
-
-.row-description {
-    margin: 0px;
 }
 
 .row-description p {
@@ -151,28 +157,10 @@ a:hover {
     height: 40px;
 }
 
-.row-button {
-    margin: 3%;
-}
-
-
-.row-visit {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #e6ecf0;
-}
-
-.row-break {
-    margin-bottom: 0px;
-}
 
 #trends {
     padding-top: 10px;
     padding-right: 0px;
-}
-
-.img-icon {
-    border-radius: 50%;
 }
 
 
@@ -183,6 +171,26 @@ a:hover {
     border-radius: 50px;
     border: 1px solid white;
     background-color: #1da1f2;
+}
+
+.row-candidates {
+    width: 980px;
+    margin-left: 8px;
+}
+
+.row-president {
+    width: 58%;
+    margin: auto;
+}
+
+
+.row-president p {
+    color: #868e96;
+    font-size: 10px;
+    font-weight: 500;
+    text-shadow: 1px 1px #ECECEC;
+    margin-bottom: 0px;
+    margin-top: 5px;
 }
 
 /*------------------------------------------------------------------------------
@@ -277,55 +285,10 @@ a:hover {
 }
 
 
-.card-projects {
-    padding: 15px;
-    width: 94%;
-    margin: auto;
-    margin-bottom: 5px;
-    text-align: left;
-    border: 1px solid #e6ecf0;
-    border: none;
-}
-
-
-
-.card-projects h1 {
-    font-size: 1rem;
-    margin-top: 0px;
-    margin-bottom: 0;
-    color: #14171a;
-    font-weight: 600;
-}
-
-.card-projects .card-content {
-    padding: 15px;
-    padding-top: 0px;
-    padding-bottom: 12px;
-    margin-top: 0px;
-    color: #1DA1F2;
-    font-weight: 600;
-    font-size: 0.8rem;
-    max-height: 700px;
-    overflow: auto;
-
-}
-
-.card-projects p {
-    color: #252b30;
-    font-size: 0.9rem;
-    margin-bottom: 4px;
-    font-weight: 600;
-    z-index: 5;
-}
-
-.card-projects .span-trend {
-    color: #7f7f7f;
-    border: none;
-}
 
 .hashtag-column {
     position: relative;
-    top: -30px;
+    top: -25px;
 }
 
 .hashtag-icon {
@@ -347,26 +310,10 @@ a:hover {
     height: 785px;
 }
 
-.card-projects-left {
-    height: 520px;
-}
-
 .card-title {
     height: 785px;
 }
 
-.card-data {
-    height: 600px;
-}
-
-
-.card-side-right {
-    height: 210px;
-}
-
-.card-projects-right {
-    height: 570px;
-}
 
 
 /*------------------------------------------------------------------------------
@@ -458,8 +405,16 @@ a:hover {
     CHART
 ------------------------------------------------------------------------------*/
 
+#presidentChart {
+    height: 434px !important;
+    width: 140px !important;
+    margin: auto !important;
+}
+
+
 #trendChart {
-    height: 480px;
+    width:990px !important;
+    height: 480px !important;
     margin-left: 0px;
     background: #fff;
 }

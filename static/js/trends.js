@@ -58,7 +58,7 @@ function getTrends() {
                     '#b6e0fa',
                     '#b6e0fa',
                     '#b6e0fa',
-                    '#b6e0fa',
+                    '#e5e5e5',
                 ],
                 }]
             },
@@ -70,7 +70,68 @@ function getTrends() {
                 legend: {
                     display: false },
                 title: {
-                fontSize: 0,
+                fontSize: 10,
+                fontColor: 'black',
+                display: false,
+                text: ''
+                },
+                scales: {
+
+                xAxes: [{
+                        gridLines: {
+                            color: "rgba(0, 0, 0, 0)",
+                            drawBorder: false,
+                            display: false
+                        },
+                        ticks: {
+                        fontColor: "white",
+                        fontSize: 0,
+                        suggestedMin: 0,
+                        suggestedMax: 1,
+                        beginAtZero: true
+                        }
+                    }],
+                yAxes: [{
+                    display: true,
+                    gridLines: {
+                            color: "rgba(0, 0, 0, 0)",
+                            drawBorder: false,
+                            display: false
+                        },
+                    ticks: {
+                        fontSize: 0,
+                        fontColor: "white",
+                        suggestedMin: 0,
+                        suggestedMax: 1,
+                        beginAtZero: true
+                    }
+                }]
+            }
+            }
+        });
+        var pcx = document.getElementById('presidentChart').getContext('2d');
+        var trendChart = new Chart(pcx, {
+            type: 'bar',
+            data: {
+                labels: ['Red',],
+                datasets: [{
+
+                    label: 'Tweet Count',
+                    data: [12,],
+                    backgroundColor: [
+                    '#1da1f2',
+                ],
+                }]
+            },
+
+            // Configuration options go here
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                legend: {
+                    display: false },
+                title: {
+                fontSize: 10,
                 fontColor: 'black',
                 display: false,
                 text: ''
@@ -120,4 +181,4 @@ $(document).ready(function() {
 
 window.setInterval(function(){
     getTrends()
-}, 15000);
+}, 55000);

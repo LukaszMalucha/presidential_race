@@ -8,8 +8,6 @@ from flask import Flask, render_template, jsonify
 from flask_bootstrap import Bootstrap
 from bson.json_util import dumps
 
-
-
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
@@ -20,28 +18,23 @@ app.config['DEBUG'] = True
 Bootstrap(app)
 mongo.init_app(app)
 
-
 trends_list = [["Mother's Day", "1124741"], ["MothersDay", "591302"], ["Moms", "536456"], ["Happy Mothers", "276271"],
-            ["IPL2019Final", "126930"], ["HappyMothersDay2019", "111327"], ["Porzingis", "112398"],
-            ["Doris Day", "108480"], ["lotteryseatupgrade", "33000"], ["Brault", "15000"]]
+               ["IPL2019Final", "126930"], ["HappyMothersDay2019", "111327"], ["Porzingis", "112398"],
+               ["Doris Day", "108480"], ["lotteryseatupgrade", "33000"], ["Brault", "15000"], ["lotteryseatupgrade", "33000"], ["Brault", "15000"]]
+
 
 ## Main View
 @app.route('/')
 def dashboard():
     return render_template('dashboard.html')
 
-app.route('/trends', methods=['GET', 'POST'])
+
+@app.route('/trends', methods=['GET', 'POST'])
 def trends():
-    try:
 
+    trends_data = {'top_ten_trends': trends_list}
 
-
-
-
-        trends = {'top_ten_trends': trends_list}
-    except:
-        trends = {}
-    return jsonify(trends)
+    return jsonify(trends_data)
 
 
 @app.errorhandler(404)
