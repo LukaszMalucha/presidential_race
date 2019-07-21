@@ -117,7 +117,7 @@ function getTrends() {
                 datasets: [{
 
                     label: 'Tweet Count',
-                    data: [12,],
+                    data: [12,12],
                     backgroundColor: [
                     '#1da1f2',
                 ],
@@ -126,6 +126,9 @@ function getTrends() {
 
             // Configuration options go here
             options: {
+                 tooltips: {
+                  enabled: false
+                },
                 responsive: true,
                 maintainAspectRatio: false,
                 legend: {
