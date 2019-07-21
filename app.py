@@ -21,10 +21,27 @@ Bootstrap(app)
 mongo.init_app(app)
 
 
+trends_list = [["Mother's Day", "1124741"], ["MothersDay", "591302"], ["Moms", "536456"], ["Happy Mothers", "276271"],
+            ["IPL2019Final", "126930"], ["HappyMothersDay2019", "111327"], ["Porzingis", "112398"],
+            ["Doris Day", "108480"], ["lotteryseatupgrade", "33000"], ["Brault", "15000"]]
+
 ## Main View
 @app.route('/')
 def dashboard():
     return render_template('dashboard.html')
+
+app.route('/trends', methods=['GET', 'POST'])
+def trends():
+    try:
+
+
+
+
+
+        trends = {'top_ten_trends': trends_list}
+    except:
+        trends = {}
+    return jsonify(trends)
 
 
 @app.errorhandler(404)

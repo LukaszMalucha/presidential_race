@@ -8,28 +8,104 @@
             <div class="row row-title">
                 <div class="card card-title">
                     <div class="row row-blue">
-                        <h1>Top 10 US Trends </h1>
+                        <h1> Top 12 Contenders </h1>
                     </div>
-                    <p><i class="far fa-clock"></i>&nbsp; NY Time - trends update every minute</p>
+                    <p><i class="fas fa-republican"></i>&nbsp; NY Time - trends update every minute</p>
+                    <div class="row plain-element">
+
+                            <canvas id="trendChart"></canvas>
+
+                    </div>
+                    <div class="row row-cards">
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 plain-element">
+                            <div class="row plain-element">
+                                <img src="{{url_for('static', filename='img/candidates/tulsi-gabbard.jpg')}}"
+                                     class="img-candidate  responsive" alt="candidate">
+                            </div>
+                            <div class="row plain-element">
+                                <p> Tulsi</p>
+                                <p> Gabbard</p>
+                                <a href="">123123</a>
+                            </div>
+                        </div>
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 plain-element">
+                            <div class="row plain-element">
+                                <img src="{{url_for('static', filename='img/candidates/bernie-sanders.jpg')}}"
+                                     class="img-candidate  responsive" alt="candidate">
+                            </div>
+                            <div class="row plain-element">
+                                <p> Bernie </p>
+                                <p> Sanders</p>
+                            </div>
+                        </div>
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 plain-element">
+                            <div class="row plain-element">
+                                <img src="{{url_for('static', filename='img/candidates/joe-biden.jpg')}}"
+                                     class="img-candidate responsive" alt="candidate">
+                            </div>
+                            <div class="row plain-element">
+                                <p> Joe </p>
+                                <p> Biden</p>
+                            </div>
+                        </div>
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 plain-element">
+                            <img src="{{url_for('static', filename='img/candidates/tulsi-gabbard.jpg')}}"
+                                 class="img-candidate  responsive" alt="candidate">
+                        </div>
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 plain-element">
+                            <img src="{{url_for('static', filename='img/candidates/bernie-sanders.jpg')}}"
+                                 class="img-candidate  responsive" alt="candidate">
+                        </div>
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 plain-element">
+                            <img src="{{url_for('static', filename='img/candidates/joe-biden.jpg')}}"
+                                 class="img-candidate responsive" alt="candidate">
+                        </div>
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 plain-element">
+                            <img src="{{url_for('static', filename='img/candidates/tulsi-gabbard.jpg')}}"
+                                 class="img-candidate  responsive" alt="candidate">
+                        </div>
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 plain-element">
+                            <img src="{{url_for('static', filename='img/candidates/bernie-sanders.jpg')}}"
+                                 class="img-candidate  responsive" alt="candidate">
+                        </div>
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 plain-element">
+                            <img src="{{url_for('static', filename='img/candidates/joe-biden.jpg')}}"
+                                 class="img-candidate responsive" alt="candidate">
+                        </div>
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 plain-element">
+                            <img src="{{url_for('static', filename='img/candidates/tulsi-gabbard.jpg')}}"
+                                 class="img-candidate  responsive" alt="candidate">
+                        </div>
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 plain-element">
+                            <img src="{{url_for('static', filename='img/candidates/bernie-sanders.jpg')}}"
+                                 class="img-candidate  responsive" alt="candidate">
+                        </div>
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 plain-element">
+                            <img src="{{url_for('static', filename='img/candidates/joe-biden.jpg')}}"
+                                 class="img-candidate responsive" alt="candidate">
+                        </div>
+
+
+                    </div>
 
                 </div>
-            </div>
-            <div class="row row-cards">
-
 
             </div>
+
 
         </div>
-        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 col-sm-pull-10 col-md-pull-10 col-lg-pull-10 col-lg-pull-10 plain-element" id="activeTrendsColumn">
+        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 col-sm-pull-10 col-md-pull-10 col-lg-pull-10 col-lg-pull-10 plain-element"
+             id="activeTrendsColumn">
             <div class="row plain-element">
                 <div class="card card-side card-side-left">
                     <div class="row row-side-blue"></div>
                     <div class="row row-description">
                         <div class="col-sm-4 col-md-4 plain-element text-center hashtag-column">
-                            <i class="fas fa-hashtag hashtag-icon"></i>
+                            <img src="{{url_for('static', filename='img/wh.png')}}"
+                                 class="img responsive img-column" alt="septellar">
                         </div>
                         <div class="col-sm-8 col-md-8 plain-element">
-                            <h1>Popular Hashtags</h1>
+                            <h1>US President</h1>
                             <p> Most Tweets last 24h</p>
                         </div>
                     </div>
