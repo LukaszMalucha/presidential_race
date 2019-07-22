@@ -72,6 +72,11 @@ a:hover {
 
 }
 
+.presidential-tweets {
+    top: -19px;
+    margin-bottom: 1px !important;
+    text-shadow: none;
+}
 .img-candidate {
     width: 50%;
     margin: auto;
@@ -135,6 +140,7 @@ a:hover {
     background: #1da1f2;
     min-height: 72px;
     height: 72px;
+    margin-bottom: 0px;
 
 }
 
@@ -148,10 +154,15 @@ a:hover {
 
 }
 
+.row-description {
+    height: 40px;
+}
+
 .row-description p {
     color: #657786;
     font-size: 0.8rem;
     margin-bottom: 5px;
+    margin-top: 10px;
     font-weight: 500;
     z-index: 5;
 }
@@ -183,8 +194,8 @@ a:hover {
 }
 
 .row-candidates {
-    width: 980px;
-    margin-left: 8px;
+    width: 98%;
+    margin-left: 1%;
 }
 
 .row-president {
@@ -415,14 +426,17 @@ a:hover {
 ------------------------------------------------------------------------------*/
 
 #presidentChart {
-    height: 445px !important;
-    width: 80px !important;
-    margin: auto !important;
+    position: relative;
+    height: 480px !important;
+    width: 50% !important;
+    left: -9%;
+    padding-bottom: 0px;
+
 }
 
 
 #trendChart {
-    width:990px !important;
+    width: 99% !important;
     height: 480px !important;
     margin-left: 0px;
     background: #fff;
@@ -480,8 +494,12 @@ a:hover {
 
 @media(max-width:1700px) {
 
+    #page-index {
+        min-height: 740px;
+    }
+
     .dashboard-cards {
-        width: 99%;
+        width: 86%;
     }
 
 
@@ -555,11 +573,29 @@ a:hover {
 }
 
 @media(max-width:1305px) {
-        .row-break {
-        height: 33px;
+
+    #page-index {
+        min-height: 700px;
     }
 
+    .dashboard-cards {
+        width: 96%;
+    }
 
+    #presidentChart {
+        height: 400px !important;
+
+    }
+
+    #trendChart {
+        height: 400px !important;
+
+    }
+
+    .card-title,
+    .card-side-left {
+        height: 700px;
+    }
 }
 
 
@@ -573,10 +609,14 @@ a:hover {
     }
 
 
-    .img-icon {
-        width: 36px;
-        height: 36px;
+    .img-column {
+        width: 42px;
+        height: 42px;
     }
+
+    .card-side h1 {
+    font-size: 0.8rem;
+}
 
 
 
@@ -584,8 +624,18 @@ a:hover {
         height: 15px;
     }
 
+    .row-president {
+        width: 62%;
+    }
+
 
 }
+
+@media(max-width:522px) {
+
+
+}
+
 
 
 /* MAX WIDTHS: EXTRA-SMALL SCREEN---------------------------------------------*/
@@ -601,18 +651,30 @@ a:hover {
        text-align: center;
     }
 
-    .card-projects,
+    .card-projects p {
+        font-size: 0.9rem;
+    }
+
+    #presidentChart,
+    #trendChart {
+        height: 0px !important;
+    }
+
+    .tweets {
+        margin-top: 20px !important;
+        top: 0px;
+    }
+
     .card-side {
         width: 98%;
     }
 
-   .img-icon {
-        width: 48px;
-        height: 48px;
+    .card-side-left {
+        height: 400px;
     }
 
-    .card-projects p {
-    font-size: 0.9rem;
+    .row-blue {
+        padding-top: 6%;
     }
 
 

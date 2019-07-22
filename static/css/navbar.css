@@ -272,13 +272,25 @@ nav ul a {
 
 @media(max-width:1700px) {
     .top-navbar {
-        padding-left: 2.1%;
-        padding-right: 3.5%;
+        padding-left: 6.5%;
+        padding-right: 8%;
     }
 
     .navbar-header {
         width:35%;
     }
+
+}
+
+@media(max-width:1305px) {
+
+    .top-navbar {
+        padding-left: 1.5%;
+        padding-right: 3%;
+    }
+
+
+
 
 }
 
