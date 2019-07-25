@@ -1,12 +1,11 @@
 ## App Utilities
 import os
 import env
-import datetime
 from db import mongo
-from twitter import twitter_api
+
 from flask import Flask, render_template, jsonify
 from flask_bootstrap import Bootstrap
-from bson.json_util import dumps
+from libs.trends import data_extractor
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
@@ -20,18 +19,19 @@ mongo.init_app(app)
 
 trends_list = [["Mother's Day", "1124741"], ["MothersDay", "591302"], ["Moms", "536456"], ["Happy Mothers", "276271"],
                ["IPL2019Final", "126930"], ["HappyMothersDay2019", "111327"], ["Porzingis", "112398"],
-               ["Doris Day", "108480"], ["lotteryseatupgrade", "33000"], ["Brault", "15000"], ["lotteryseatupgrade", "33000"], ["Brault", "15000"]]
+               ["Doris Day", "108480"], ["lotteryseatupgrade", "33000"], ["Brault", "15000"],
+               ["lotteryseatupgrade", "33000"], ["Brault", "15000"]]
 
 
 ## Main View
 @app.route('/')
 def dashboard():
+    data_extractor()
     return render_template('dashboard.html')
 
 
 @app.route('/trends', methods=['GET', 'POST'])
 def trends():
-
     trends_data = {'top_ten_trends': trends_list}
 
     return jsonify(trends_data)
