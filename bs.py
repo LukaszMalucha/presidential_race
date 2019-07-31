@@ -21,7 +21,7 @@ table = soup.table
 
 candidates = []
 candidates_total = []
-candidates_score = {}
+candidates_score = []
 date = str(datetime.date.today())
 
 
@@ -33,6 +33,7 @@ for row in soup.find_all('tr', class_='diff-row evTabRow bc')[:20]:
 for row in candidates:
     row_split = []
     if row[0] in candidates_set:
+        image = row[0].replace(' ', '-') + '.jpg'
         for element in row[1:]:
             element_1 = element.split('/')
             if len(element_1) == 1:
@@ -48,9 +49,11 @@ for row in candidates:
                 total_score += total
 
             final_score = total_score / len(candidate)
+            score_rounded = round(final_score, 1)
+            cash_prize = 100 + score_rounded * 100
 
-        candidates_score[row[0]] = final_score
-candidates_score['Date'] = date
+        candidates_score.append((row[0],cash_prize, image))
+candidates_score.insert(0,('date',date))
 
 
 print(candidates_score)
