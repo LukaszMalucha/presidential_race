@@ -5,7 +5,7 @@ from db import mongo
 
 from flask import Flask, render_template, jsonify
 from flask_bootstrap import Bootstrap
-from libs.trends import data_extractor
+from libs.data_extractor import get_data
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
@@ -26,8 +26,8 @@ trends_list = [["Mother's Day", "1124741"], ["MothersDay", "591302"], ["Moms", "
 ## Main View
 @app.route('/')
 def dashboard():
-    data_extractor()
-    return render_template('dashboard.html')
+    candidates_data = get_data()
+    return render_template('dashboard.html', candidates_data=candidates_data)
 
 
 @app.route('/trends', methods=['GET', 'POST'])
