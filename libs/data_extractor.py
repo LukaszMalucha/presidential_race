@@ -2,6 +2,7 @@ import bs4 as bs
 from urllib.request import Request, urlopen
 import urllib
 import datetime
+from http.client import IncompleteRead
 
 candidates_set = {'Donald Trump', 'Kamala Harris', 'Elizabeth Warren',  'Joe Biden', 'Bernie Sanders', 'Pete Buttigieg',
                   'Andrew Yang', 'Tulsi Gabbard', 'Cory Booker', 'Beto ORourke', 'Julian Castro', 'Amy Klobuchar', 'Hillary Clinton'}
@@ -9,13 +10,23 @@ candidates_set = {'Donald Trump', 'Kamala Harris', 'Elizabeth Warren',  'Joe Bid
 
 def get_data():
 
-    req = urllib.request.Request(
-        'https://www.oddschecker.com/politics/us-politics/us-presidential-election-2020/winner',
-        data=None,
-        headers={
-            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36'
-        }
-    )
+    try:
+        req = urllib.request.Request(
+            'https://www.oddschecker.com/politics/us-politics/us-presidential-election-2020/winner',
+            data=None,
+            headers={
+                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36'
+            }
+        )
+    except IncompleteRead:
+        req = urllib.request.Request(
+            'https://www.oddschecker.com/politics/us-politics/us-presidential-election-2020/winner',
+            data=None,
+            headers={
+                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36'
+            }
+        )
+
 
     f = urllib.request.urlopen(req)
     soup = bs.BeautifulSoup(f, 'lxml')
@@ -52,7 +63,7 @@ def get_data():
                     total_score += total
 
                 final_score = total_score / len(candidate)
-                score_rounded = round(final_score, 1)
+                score_rounded = round(final_score, 0)
                 cash_prize = 100 + score_rounded * 100
 
             candidates_score.append((row[0],cash_prize, image))

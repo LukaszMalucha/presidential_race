@@ -17,24 +17,19 @@ app.config['DEBUG'] = True
 Bootstrap(app)
 mongo.init_app(app)
 
-trends_list = [["Mother's Day", "1124741"], ["MothersDay", "591302"], ["Moms", "536456"], ["Happy Mothers", "276271"],
-               ["IPL2019Final", "126930"], ["HappyMothersDay2019", "111327"], ["Porzingis", "112398"],
-               ["Doris Day", "108480"], ["lotteryseatupgrade", "33000"], ["Brault", "15000"],
-               ["lotteryseatupgrade", "33000"], ["Brault", "15000"]]
-
 
 ## Main View
 @app.route('/')
 def dashboard():
+
+    return render_template('dashboard.html')
+
+
+@app.route('/candidates', methods=['GET', 'POST'])
+def candidates():
     candidates_data = get_data()
-    return render_template('dashboard.html', candidates_data=candidates_data)
-
-
-@app.route('/trends', methods=['GET', 'POST'])
-def trends():
-    trends_data = {'top_ten_trends': trends_list}
-
-    return jsonify(trends_data)
+    data_dict = {'candidates_data': candidates_data}
+    return jsonify(data_dict)
 
 
 @app.errorhandler(404)
