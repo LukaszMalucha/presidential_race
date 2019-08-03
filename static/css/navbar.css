@@ -11,7 +11,7 @@
     font-size: 13px;
     font-weight: normal;
     display: block;
-    color: #1DA1F2;
+    color: #ffffff;
 }
 
 
@@ -35,7 +35,7 @@
     width: 100%;
     height: 60px;
     text-align: left;
-    padding-top: 12px;
+    padding-top: 10px;
     font-weight: 700;
     color: #1a2026;
     background: transparent;
@@ -54,9 +54,9 @@
     float: left;
     font-size: 18px;
     margin-right: 5px;
-    margin-top: -1px;
+    margin-top: 0px;
     height: auto;
-    color: #1DA1F2;
+    color: #ffffff;
 }
 
 .nav > li {
@@ -190,7 +190,7 @@ nav ul li:hover, nav ul li:active {
 ------------------------------------------------------------------------------*/
 
 .top-navbar {
-    background: #ffffff;
+    background: #004833;
     box-shadow: none;
     border-bottom: 1px solid rgba(0,0,0,0.4);
 }
@@ -200,7 +200,7 @@ nav ul li:hover, nav ul li:active {
 }
 
 nav ul a {
-    color: #798b9a;
+    color: #fffff;
 }
 
 .dropdown-content {
@@ -241,7 +241,7 @@ nav ul a {
  .nav > li > a:focus,
  .nav > li > a:active{
     background-color: transparent;
-    color: #1da1f2;
+    color: #9dc378;
 }
 
  .navbar-default .navbar-brand:hover {

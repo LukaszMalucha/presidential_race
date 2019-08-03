@@ -1,6 +1,6 @@
 ## App Utilities
 import os
-import env
+# import env
 import datetime
 from db import mongo
 from flask import Flask, render_template, jsonify
@@ -14,7 +14,7 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.config['PROPAGATE_EXCEPTIONS'] = True
-app.config['DEBUG'] = True
+app.config['DEBUG'] = False
 
 Bootstrap(app)
 mongo.init_app(app)
@@ -71,8 +71,8 @@ def error500(error):
 
 
 if __name__ == '__main__':
-    app.run()
+    # app.run()
 
 # Heroku
-#     port = int(os.environ.get('PORT', 5000))
-#     app.run(host='0.0.0.0', port=port)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
