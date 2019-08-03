@@ -23,33 +23,34 @@ mongo.init_app(app)
 ## Main View
 @app.route('/')
 def dashboard():
-    mongodb = Collection()
-    date = str(datetime.date.today())
-
-    candidates = mongodb.find_last_data(date)
-    data = candidates['candidates']
-    earliest = str(datetime.date.today() - datetime.timedelta(days=7))
-    return render_template('dashboard.html', candidates=data)
+    """main view"""
+    return render_template('dashboard.html')
 
 
 @app.route('/candidates', methods=['GET', 'POST'])
 def candidates():
-    mongodb = Collection()
+
     date = str(datetime.date.today())
+    # Try to scrape or get the previous data
     try:
         candidates_data, max_prize = get_data()
     except:
-        candidates = mongodb.find_last_data(date)
-        data = candidates['candidates']
-        candidates_data, max_prize = data, 13000
+        try:
+            mongodb = Collection()
+            candidates = mongodb.find_last_data(date)
+            data = candidates['candidates']
+            candidates_data, max_prize = data, 13000
+        except:
+            pass
 
     # Upload candidates to MongoDB
     data = {}
     data['date'] = date
     data['candidates'] = candidates_data
     earliest = str(datetime.date.today() - datetime.timedelta(days=7))
-    Collection.delete_by_date(date=earliest)
     try:
+        mongodb = Collection()
+        Collection.delete_by_date(date=earliest)
         mongodb.insert_data(data)
     except Exception as e:
         pass

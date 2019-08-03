@@ -2,17 +2,15 @@ import bs4 as bs
 from urllib.request import Request
 import urllib
 import datetime
-from http.client import IncompleteRead
 from operator import itemgetter
-import time
 from http.client import IncompleteRead
 
-candidates_set = {'Donald Trump', 'Kamala Harris', 'Elizabeth Warren',  'Joe Biden', 'Bernie Sanders', 'Pete Buttigieg',
-                  'Andrew Yang', 'Tulsi Gabbard', 'Cory Booker', 'Beto ORourke', 'Julian Castro', 'Amy Klobuchar', 'Hillary Clinton'}
+candidates_set = {'Donald Trump', 'Kamala Harris', 'Elizabeth Warren', 'Joe Biden', 'Bernie Sanders', 'Pete Buttigieg',
+                  'Andrew Yang', 'Tulsi Gabbard', 'Cory Booker', 'Beto ORourke', 'Julian Castro', 'Amy Klobuchar',
+                  'Hillary Clinton'}
 
 
 def get_data():
-
     try:
         req = urllib.request.Request(
             'https://www.oddschecker.com/politics/us-politics/us-presidential-election-2020/winner',
@@ -31,18 +29,18 @@ def get_data():
     f = urllib.request.urlopen(req)
     soup = bs.BeautifulSoup(f, 'lxml')
 
-
     candidates = []
     candidates_total = []
     candidates_score = []
     date = str(datetime.date.today())
 
-
+    # get candidates
     for row in soup.find_all('tr', class_='diff-row evTabRow bc')[:20]:
         td = row.find_all('td')
         row = [i.text for i in td if len(i) > 0]
         candidates.append(row)
 
+    # prepare data for each candidate
     for row in candidates:
         row_split = []
         if row[0] in candidates_set:
@@ -71,8 +69,6 @@ def get_data():
     max_prize = max(map(lambda x: x[2], candidates_score))
     candidates_score.insert(0, ('date', date, 0))
 
-    candidates_score = sorted(candidates_score, key= itemgetter(2))
-
+    candidates_score = sorted(candidates_score, key=itemgetter(2))
 
     return candidates_score, max_prize
-

@@ -44,7 +44,7 @@ function getCandidates() {
 //      CHART
 
         dataLabels = dataCandidates.map(function(x) {
-            return x[0];
+            return x[0] + ' ' + x[1];
         });
         dataValues = dataCandidates.map(function(x) {
             return x[2];
@@ -195,4 +195,4 @@ $(document).ready(function() {
 
 window.setInterval(function(){
     getCandidates()
-}, 100000);
+}, 1000 * 60 * 60 * 24);

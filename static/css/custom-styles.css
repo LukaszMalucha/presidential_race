@@ -211,7 +211,7 @@ a:hover {
     font-weight: 500;
     text-shadow: 1px 1px #ECECEC;
     margin-bottom: 0px;
-    margin-top: 6px;
+    margin-top: 4px;
 }
 
 /*------------------------------------------------------------------------------
@@ -428,7 +428,7 @@ a:hover {
 
 #presidentChart {
     position: relative;
-    height: 480px !important;
+    height: 483px !important;
     width: 50% !important;
     left: -9%;
     padding-bottom: 0px;
@@ -588,7 +588,7 @@ a:hover {
 
     }
 
-    #trendChart {
+    #candidatesChart {
         height: 400px !important;
 
     }
@@ -657,7 +657,7 @@ a:hover {
     }
 
     #presidentChart,
-    #trendChart {
+    #candidatesChart {
         height: 0px !important;
     }
 
