@@ -1,7 +1,10 @@
 import bs4 as bs
-from urllib.request import Request, urlopen
+from urllib.request import Request
 import urllib
 import datetime
+from http.client import IncompleteRead
+from operator import itemgetter
+import time
 from http.client import IncompleteRead
 
 candidates_set = {'Donald Trump', 'Kamala Harris', 'Elizabeth Warren',  'Joe Biden', 'Bernie Sanders', 'Pete Buttigieg',
@@ -16,22 +19,18 @@ def get_data():
             data=None,
             headers={
                 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36'
-            }
-        )
+            })
     except IncompleteRead:
         req = urllib.request.Request(
             'https://www.oddschecker.com/politics/us-politics/us-presidential-election-2020/winner',
             data=None,
             headers={
                 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36'
-            }
-        )
-
+            })
 
     f = urllib.request.urlopen(req)
     soup = bs.BeautifulSoup(f, 'lxml')
 
-    table = soup.table
 
     candidates = []
     candidates_total = []
@@ -47,6 +46,8 @@ def get_data():
     for row in candidates:
         row_split = []
         if row[0] in candidates_set:
+            first_name = row[0].split(' ')[0]
+            surname = row[0].split(' ')[1]
             image = row[0].replace(' ', '-') + '.jpg'
             for element in row[1:]:
                 element_1 = element.split('/')
@@ -66,9 +67,12 @@ def get_data():
                 score_rounded = round(final_score, 0)
                 cash_prize = 100 + score_rounded * 100
 
-            candidates_score.append((row[0],cash_prize, image))
-    candidates_score.insert(0,('date',date))
+            candidates_score.append((first_name, surname, cash_prize, image))
+    max_prize = max(map(lambda x: x[2], candidates_score))
+    candidates_score.insert(0, ('date', date, 0))
+
+    candidates_score = sorted(candidates_score, key= itemgetter(2))
 
 
-    return candidates_score
+    return candidates_score, max_prize
 

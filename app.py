@@ -2,10 +2,11 @@
 import os
 import env
 from db import mongo
-
 from flask import Flask, render_template, jsonify
 from flask_bootstrap import Bootstrap
+
 from libs.data_extractor import get_data
+from models.collection import Collection
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
@@ -27,8 +28,17 @@ def dashboard():
 
 @app.route('/candidates', methods=['GET', 'POST'])
 def candidates():
-    candidates_data = get_data()
-    data_dict = {'candidates_data': candidates_data}
+    candidates_data, max_prize = get_data()
+    # Upload candidates to MongoDB
+    mongodb = Collection()
+    data = {}
+    data['candidates_data'] = candidates_data
+    try:
+        mongodb.insert_data(data)
+    except Exception as e:
+        pass
+
+    data_dict = {'candidates_data': candidates_data, 'max_prize': max_prize}
     return jsonify(data_dict)
 
 
