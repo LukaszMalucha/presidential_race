@@ -1,7 +1,6 @@
 ## App Utilities
 import os
 # import env
-import time
 import datetime
 from db import mongo
 from flask import Flask, render_template, jsonify
@@ -25,7 +24,6 @@ mongo.init_app(app)
 @app.route('/')
 def dashboard():
     """main view"""
-
     return render_template('dashboard.html')
 
 
@@ -33,27 +31,18 @@ def dashboard():
 def candidates():
 
     date = str(datetime.date.today())
-
+    # Try to scrape or get the previous data
     try:
-        mongodb = Collection()
-        candidates = mongodb.find_last_data(date)
-        data = candidates['candidates']
-        candidates_data, max_prize = data, 13000
+        candidates_data, max_prize = get_data()
     except:
-        time.sleep(3)
-        mongodb = Collection()
-        candidates = mongodb.find_last_data(date)
-        data = candidates['candidates']
-        candidates_data, max_prize = data, 13000
+        try:
+            mongodb = Collection()
+            candidates = mongodb.find_last_data(date)
+            data = candidates['candidates']
+            candidates_data, max_prize = data, 13000
+        except:
+            pass
 
-
-    data_dict = {'candidates_data': candidates_data, 'max_prize': max_prize}
-    return jsonify(data_dict)
-
-@app.route('/upload_data', methods=['GET', 'POST'])
-def upload_data():
-    date = str(datetime.date.today())
-    candidates_data, max_prize = get_data()
     # Upload candidates to MongoDB
     data = {}
     data['date'] = date
@@ -66,7 +55,9 @@ def upload_data():
     except Exception as e:
         pass
 
-    return jsonify({"status": "OK"})
+
+    data_dict = {'candidates_data': candidates_data, 'max_prize': max_prize}
+    return jsonify(data_dict)
 
 
 @app.errorhandler(404)

@@ -189,6 +189,17 @@ function getCandidates() {
     });
 }
 
+function uploadData() {
+
+  req = $.ajax({
+        url: '/upload_data',
+        type: 'POST',
+    });
+
+    req.done(function(data) {
+        console.log('Candidates Data uploaded')
+        });
+}
 
 $(document).ready(function() {
     getCandidates()
@@ -196,5 +207,7 @@ $(document).ready(function() {
 
 
 window.setInterval(function(){
-    getCandidates()
-}, 1000 * 60 * 60 * 24);
+    uploadData()
+}, 10000);
+
+//1000 * 60 * 60 * 24
