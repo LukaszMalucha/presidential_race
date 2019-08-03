@@ -1,6 +1,7 @@
 ## App Utilities
 import os
 import env
+import datetime
 from db import mongo
 from flask import Flask, render_template, jsonify
 from flask_bootstrap import Bootstrap
@@ -22,21 +23,37 @@ mongo.init_app(app)
 ## Main View
 @app.route('/')
 def dashboard():
+    mongodb = Collection()
+    date = str(datetime.date.today())
 
-    return render_template('dashboard.html')
+    candidates = mongodb.find_last_data(date)
+    data = candidates['candidates']
+    earliest = str(datetime.date.today() - datetime.timedelta(days=7))
+    return render_template('dashboard.html', candidates=data)
 
 
 @app.route('/candidates', methods=['GET', 'POST'])
 def candidates():
-    candidates_data, max_prize = get_data()
-    # Upload candidates to MongoDB
     mongodb = Collection()
+    date = str(datetime.date.today())
+    try:
+        candidates_data, max_prize = get_data()
+    except:
+        candidates = mongodb.find_last_data(date)
+        data = candidates['candidates']
+        candidates_data, max_prize = data, 13000
+
+    # Upload candidates to MongoDB
     data = {}
-    data['candidates_data'] = candidates_data
+    data['date'] = date
+    data['candidates'] = candidates_data
+    earliest = str(datetime.date.today() - datetime.timedelta(days=7))
+    Collection.delete_by_date(date=earliest)
     try:
         mongodb.insert_data(data)
     except Exception as e:
         pass
+
 
     data_dict = {'candidates_data': candidates_data, 'max_prize': max_prize}
     return jsonify(data_dict)

@@ -7,9 +7,20 @@ class Collection():
         self.mongo = mongo
 
     def insert_data(self, data):
-        return mongo.db.cadidates_odds.insert(data)
+        return mongo.db.candidates_odds.insert(data)
 
     @classmethod
-    def find_last_data(cls, hashtag):
-        return mongo.db.harvest_trends.find({"hashtag": hashtag})
+    def distinct_dates(cls):
+        return mongo.db.candidates_odds.distinct("date")
 
+    @classmethod
+    def find_last_data(cls, date):
+        return mongo.db.candidates_odds.find_one({'date': date})
+
+    @classmethod
+    def find_earliest_data(cls, date):
+        return mongo.db.candidates_odds.find_one({'date': date})
+
+    @classmethod
+    def delete_by_date(cls, date):
+        return mongo.db.candidates_odds.remove({"date": date})

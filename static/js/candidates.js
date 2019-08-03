@@ -195,4 +195,4 @@ $(document).ready(function() {
 
 window.setInterval(function(){
     getCandidates()
-}, 5000);
+}, 100000);
