@@ -25,7 +25,6 @@ mongo.init_app(app)
 @app.route('/')
 def dashboard():
     """main view"""
-
     return render_template('dashboard.html')
 
 
@@ -33,10 +32,12 @@ def dashboard():
 def candidates():
 
     date = str(datetime.date.today())
-
+    yesterday = str(datetime.date.today() - datetime.timedelta(days=1))
     try:
         mongodb = Collection()
         candidates = mongodb.find_last_data(date)
+        if candidates is None:
+            candidates = mongodb.find_last_data(yesterday)
         data = candidates['candidates']
         candidates_data, max_prize = data, 13000
     except:
