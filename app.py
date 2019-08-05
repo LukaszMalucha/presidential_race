@@ -54,7 +54,7 @@ def candidates():
 @app.route('/upload_data', methods=['GET', 'POST'])
 def upload_data():
     date = str(datetime.date.today())
-    earliest = str(datetime.date.today() - datetime.timedelta(days=4))
+    earliest = str(datetime.date.today() - datetime.timedelta(days=3))
     try:
         candidates_data, max_prize = get_data()
         # Upload candidates to MongoDB

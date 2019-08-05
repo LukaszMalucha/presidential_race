@@ -202,7 +202,8 @@ function uploadData() {
 }
 
 $(document).ready(function() {
-    getCandidates()
+    getCandidates();
+    uploadData()
 });
 
 
