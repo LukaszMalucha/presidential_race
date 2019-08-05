@@ -15,7 +15,7 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.config['PROPAGATE_EXCEPTIONS'] = True
-app.config['DEBUG'] = True
+app.config['DEBUG'] = False
 
 Bootstrap(app)
 mongo.init_app(app)
@@ -25,7 +25,7 @@ mongo.init_app(app)
 @app.route('/')
 def dashboard():
     """main view"""
-    return render_template('dashboard.html' )
+    return render_template('dashboard.html')
 
 
 @app.route('/candidates', methods=['GET', 'POST'])
@@ -37,7 +37,7 @@ def candidates():
         mongodb = Collection()
         candidates = mongodb.find_last_data(date)
         if candidates is None:
-            candidates = mongodb.find_last_data(yesterday)
+            candidates = mongodb.find_random()
         data = candidates['candidates']
         candidates_data, max_prize = data, 13000
     except:

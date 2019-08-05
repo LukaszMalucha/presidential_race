@@ -14,6 +14,10 @@ class Collection():
         return mongo.db.candidates_odds.distinct("date")
 
     @classmethod
+    def find_random(cls):
+        return mongo.db.candidates_odds.find_one()
+
+    @classmethod
     def find_last_data(cls, date):
         return mongo.db.candidates_odds.find_one({'date': date})
 
