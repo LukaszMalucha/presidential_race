@@ -25,7 +25,7 @@ mongo.init_app(app)
 @app.route('/')
 def dashboard():
     """main view"""
-    return render_template('dashboard.html')
+    return render_template('dashboard.html' )
 
 
 @app.route('/candidates', methods=['GET', 'POST'])
