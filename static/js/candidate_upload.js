@@ -197,7 +197,7 @@ function uploadData() {
     });
 
     req.done(function(data) {
-        console.log('Candidates Data uploaded')
+        console.log(data)
         });
 }
 
@@ -207,7 +207,7 @@ $(document).ready(function() {
 
 
 window.setInterval(function(){
+    console.log('upload');
     uploadData()
-
-}, 3600000);
+}, 600000);
 

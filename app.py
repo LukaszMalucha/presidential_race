@@ -15,7 +15,7 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.config['PROPAGATE_EXCEPTIONS'] = True
-app.config['DEBUG'] = False
+app.config['DEBUG'] = True
 
 Bootstrap(app)
 mongo.init_app(app)
@@ -54,13 +54,13 @@ def candidates():
 @app.route('/upload_data', methods=['GET', 'POST'])
 def upload_data():
     date = str(datetime.date.today())
-    candidates_data, max_prize = get_data()
-    # Upload candidates to MongoDB
-    data = {}
-    data['date'] = date
-    data['candidates'] = candidates_data
-    earliest = str(datetime.date.today() - datetime.timedelta(days=7))
+    earliest = str(datetime.date.today() - datetime.timedelta(days=4))
     try:
+        candidates_data, max_prize = get_data()
+        # Upload candidates to MongoDB
+        data = {}
+        data['date'] = date
+        data['candidates'] = candidates_data
         mongodb = Collection()
         Collection.delete_by_date(date=earliest)
         mongodb.insert_data(data)
