@@ -209,5 +209,5 @@ $(document).ready(function() {
 window.setInterval(function(){
     console.log('upload');
     uploadData()
-}, 6000);
+}, 100000);
 
