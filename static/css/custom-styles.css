@@ -555,8 +555,9 @@ a:hover {
         left: -30px !important;
     }
 
-    #trendChart {
-        height: 510px;
+    #presidentChart,
+    #candidatesChart {
+        height: 420px !important;
     }
 
     .row-button {
