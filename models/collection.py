@@ -1,7 +1,7 @@
 from db import mongo
 
 
-class Collection():
+class Collection:
 
     def __init__(self):
         self.mongo = mongo
