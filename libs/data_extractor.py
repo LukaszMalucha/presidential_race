@@ -70,6 +70,6 @@ def get_data():
     candidates_score.insert(0, ('date', date, 0))
 
     candidates_score = sorted(candidates_score, key=itemgetter(2))
-    candidates_score = candidates_score[:14]
+    candidates_score = candidates_score[:12]
 
     return candidates_score, max_prize
