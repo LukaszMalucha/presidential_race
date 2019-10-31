@@ -643,6 +643,10 @@ a:hover {
 
 @media(max-width:522px) {
 
+    .row-title h1 {
+    font-size: 20px;
+    }
+
     .dashboard-cards {
         width: 95%;
         margin-bottom: 80px;
@@ -650,6 +654,14 @@ a:hover {
 
     .row-description {
        text-align: center;
+    }
+
+    .row-description p {
+        margin: 10px;
+    }
+
+    .card-title {
+        height: 780px;
     }
 
     .card-projects p {
@@ -679,8 +691,10 @@ a:hover {
     }
 
 
-    .col-sm-2 {
-        width: 25%;
+    .col-sm-3 {
+        width: 33%;
+
+
     }
 
 
