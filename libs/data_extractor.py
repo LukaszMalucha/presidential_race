@@ -7,7 +7,7 @@ from http.client import IncompleteRead
 
 candidates_set = {'Donald Trump', 'Kamala Harris', 'Elizabeth Warren', 'Joe Biden', 'Bernie Sanders', 'Pete Buttigieg',
                   'Andrew Yang', 'Tulsi Gabbard', 'Cory Booker', 'Beto ORourke', 'Julian Castro', 'Amy Klobuchar',
-                  'Hillary Clinton', 'Mike Pence', 'Nikki Haley'}
+                  'Hillary Clinton', 'Mike Pence', 'Nikki Haley', 'Michael Bloomberg'}
 
 
 def get_data():
@@ -70,6 +70,6 @@ def get_data():
     candidates_score.insert(0, ('date', date, 0))
 
     candidates_score = sorted(candidates_score, key=itemgetter(2))
-    candidates_score = candidates_score[:12]
+    candidates_score = candidates_score[:6]
 
     return candidates_score, max_prize

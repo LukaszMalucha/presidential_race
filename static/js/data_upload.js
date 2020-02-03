@@ -24,7 +24,7 @@ function getCandidates() {
             }
             else {
             $('.row-candidates').append(
-                '<div class="col-xs-3 col-sm-3 col-md-1 col-lg-1 plain-element">' +
+                '<div class="col-xs-3 col-sm-3 col-md-2 col-lg-2 plain-element">' +
                 '<p class="candidates">' + element[2] + '$</p>' +
                 '<div class="row plain-element">' +
                 '<img src="https://flask-static-files.s3-eu-west-1.amazonaws.com/candidates/' + element[3]   + '"class="img-candidate responsive" alt="candidate"></div>' +
