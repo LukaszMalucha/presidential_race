@@ -78,7 +78,7 @@ a:hover {
     text-shadow: none;
 }
 .img-candidate {
-    width: 50%;
+    width: 40%;
     margin: auto;
 }
 
@@ -211,6 +211,11 @@ a:hover {
     font-weight: 500;
     margin-bottom: 0px;
     margin-top: 4px;
+}
+
+.row-president .img-candidate {
+    width: 66%;
+    margin: auto;
 }
 
 /*------------------------------------------------------------------------------
@@ -432,9 +437,9 @@ a:hover {
 
 #presidentChart {
     position: relative;
-    height: 483px !important;
-    width: 50% !important;
-    left: -9%;
+    height: 473px !important;
+    width: 90% !important;
+    left: 4%;
     padding-bottom: 0px;
 
 }
@@ -560,10 +565,7 @@ a:hover {
         left: -30px !important;
     }
 
-    #presidentChart,
-    #candidatesChart {
-        height: 420px !important;
-    }
+
 
     .row-button {
         margin-bottom: 5%;
@@ -588,19 +590,10 @@ a:hover {
         width: 96%;
     }
 
-    #presidentChart {
-        height: 400px !important;
-
-    }
-
-    #candidatesChart {
-        height: 400px !important;
-
-    }
 
     .card-title,
     .card-side-left {
-        height: 700px;
+        height: 780px;
     }
 }
 
@@ -614,12 +607,6 @@ a:hover {
         width: 100%;
     }
 
-
-    .img-column {
-        width: 42px;
-        height: 42px;
-    }
-
     .card-side h1 {
     font-size: 0.8rem;
 }
@@ -631,7 +618,7 @@ a:hover {
     }
 
     .row-president {
-        width: 62%;
+        width: 72%;
     }
 
 
