@@ -35,16 +35,16 @@ def candidates():
     yesterday = str(datetime.date.today() - datetime.timedelta(days=1))
     try:
         mongodb = Collection()
-        candidates = mongodb.find_last_data(date)
-        if candidates is None:
-            candidates = mongodb.find_random()
-        data = candidates['candidates']
+        candidates_dict = mongodb.find_last_data(date)
+        if candidates_dict is None:
+            candidates_dict = mongodb.find_random()
+        data = candidates_dict['candidates']
         candidates_data, max_prize = data, 13000
     except:
         time.sleep(3)
         mongodb = Collection()
-        candidates = mongodb.find_last_data(date)
-        data = candidates['candidates']
+        candidates_dict = mongodb.find_last_data(date)
+        data = candidates_dict['candidates']
         candidates_data, max_prize = data, 13000
 
 
