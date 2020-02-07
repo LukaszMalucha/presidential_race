@@ -55,17 +55,17 @@ def candidates():
 def upload_data():
     date = str(datetime.date.today())
     earliest = str(datetime.date.today() - datetime.timedelta(days=3))
-    # try:
-    candidates_data, max_prize = get_data()
+    try:
+        candidates_data, max_prize = get_data()
     # Upload candidates to MongoDB
-    data = dict()
-    data['date'] = date
-    data['candidates'] = candidates_data
-    mongodb = Collection()
-    Collection.delete_by_date(date=earliest)
-    mongodb.insert_data(data)
-    # except Exception as e:
-    #     pass
+        data = dict()
+        data['date'] = date
+        data['candidates'] = candidates_data
+        mongodb = Collection()
+        Collection.delete_by_date(date=earliest)
+        mongodb.insert_data(data)
+    except Exception as e:
+        pass
 
     return jsonify({"status": "OK"})
 
