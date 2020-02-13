@@ -210,5 +210,5 @@ $(document).ready(function() {
 window.setInterval(function(){
     console.log('upload');
     uploadData()
-}, 1000000);
+}, 3600000 * 8);
 
