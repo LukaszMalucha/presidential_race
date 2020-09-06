@@ -1,6 +1,6 @@
 ## App Utilities
 import os
-# import env
+import env
 import time
 import datetime
 from db import mongo
@@ -81,8 +81,8 @@ def error500(error):
 
 
 if __name__ == '__main__':
-    # app.run()
+    app.run()
 
 # Heroku
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
+#     port = int(os.environ.get('PORT', 5000))
+#     app.run(host='0.0.0.0', port=port)
