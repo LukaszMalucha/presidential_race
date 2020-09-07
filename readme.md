@@ -1,10 +1,13 @@
 ## US Elections Odds
 
+Bs scraper with flask and jQuery display
+
 #### Stack
 
 1) Flask
 2) Beautifulsoup
 3) MongoDB
+4) jQuery
 
 <br>
 
