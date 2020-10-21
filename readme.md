@@ -1,6 +1,6 @@
 ## US Elections Odds
 
-Bs scraper with flask and jQuery display
+BeautifulSoup scraper with flask and jQuery display
 
 #### Stack
 
